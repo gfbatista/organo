@@ -1,12 +1,12 @@
-import './TextField.css'
+import "./TextField.css";
 
-const TextField = () => {
-    return (
-        <div className="text-field">
-            <label>Nome</label>
-            <input placeholder='Digite o seu nome' />
-        </div>
-    )
-}
+const TextField = (props) => {
+  return (
+    <div className="text-field">
+      <label>{props.label}</label>
+      <input placeholder={props.placeholder} />
+    </div>
+  );
+};
 
-export default TextField
+export default TextField;
