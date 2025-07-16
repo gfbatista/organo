@@ -58,6 +58,7 @@ function App() {
       {squads.map((squad) => (
         <Squad
           key={squad.name}
+          collaborators={collaborators.filter(collaborator => collaborator.squad === squad.name)}
           name={squad.name}
           primaryColor={squad.primaryColor}
           secondaryColor={squad.secondaryColor}

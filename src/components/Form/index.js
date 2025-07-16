@@ -14,6 +14,10 @@ const Form = (props) => {
   const onSave = (event) => {
     event.preventDefault();
     props.toCollaborator({ name, position, image, squad });
+    setName('')
+    setPosition('')
+    setImage('')
+    setSquad('')
   };
 
   return (
