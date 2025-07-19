@@ -12,9 +12,12 @@ const Squad = (props) => {
         <div className="collaborators">
           {props.collaborators.map((collaborator) => (
             <Collaborator
+              key={collaborator.name}
               name={collaborator.name}
               position={collaborator.position}
               image={collaborator.image}
+              backgroundColor={props.primaryColor}
+
             />
           ))}
         </div>
