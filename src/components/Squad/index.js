@@ -2,6 +2,8 @@ import Collaborator from "../Collaborator";
 import "./Squad.css";
 
 const Squad = (props) => {
+  function deleteCollaborator() {
+  }
   return (
     props.collaborators.length && (
       <section
@@ -17,7 +19,7 @@ const Squad = (props) => {
               position={collaborator.position}
               image={collaborator.image}
               backgroundColor={props.primaryColor}
-
+              onDelete={deleteCollaborator}
             />
           ))}
         </div>
