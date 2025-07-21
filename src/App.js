@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Banner } from "./components/Banner";
 import Form from "./components/Form";
 import Squad from "./components/Squad";
+import Footer from "./components/Footer";
 
 function App() {
   const squads = [
@@ -55,15 +56,21 @@ function App() {
         squads={squads.map((squad) => squad.name)}
         toCollaborator={(collaborator) => toCollaborator(collaborator)}
       />
-      {squads.map((squad) => (
-        <Squad
-          key={squad.name}
-          collaborators={collaborators.filter(collaborator => collaborator.squad === squad.name)}
-          name={squad.name}
-          primaryColor={squad.primaryColor}
-          secondaryColor={squad.secondaryColor}
-        />
-      ))}
+      <section className="squad">
+        <h1>Minha organização</h1>
+        {squads.map((squad) => (
+          <Squad
+            key={squad.name}
+            collaborators={collaborators.filter(
+              (collaborator) => collaborator.squad === squad.name
+            )}
+            name={squad.name}
+            primaryColor={squad.primaryColor}
+            secondaryColor={squad.secondaryColor}
+          />
+        ))}
+      </section>
+      <Footer />
     </div>
   );
 }
