@@ -1,24 +1,32 @@
 import Collaborator from "../Collaborator";
 import "./Squad.css";
+import hexToRgba from "hex-to-rgba";
 
-const Squad = (props) => {
-  function deleteCollaborator() {
-  }
+const Squad = ({ changeColor, collaborators, deleteCollaborator, squad }) => {
   return (
-    props.collaborators.length && (
+    collaborators.length && (
       <section
         className="squad"
-        style={{ backgroundColor: props.secondaryColor }}
+        style={{
+          backgroundImage: "url(/images/fundo.png)",
+          backgroundColor: hexToRgba(squad.color, 0.6),
+        }}
       >
-        <h3 style={{ borderColor: props.primaryColor }}>{props.name}</h3>
+        <input
+          type="color"
+          onChange={(event) => changeColor(event.target.value, squad.name)}
+          value={squad.color}
+          className="input-color"
+        ></input>
+        <h3 style={{ borderColor: squad.color }}>{squad.name}</h3>
         <div className="collaborators">
-          {props.collaborators.map((collaborator) => (
+          {collaborators.map((collaborator) => (
             <Collaborator
               key={collaborator.name}
               name={collaborator.name}
               position={collaborator.position}
               image={collaborator.image}
-              backgroundColor={props.primaryColor}
+              backgroundColor={squad.color}
               onDelete={deleteCollaborator}
             />
           ))}

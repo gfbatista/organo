@@ -5,49 +5,55 @@ import Squad from "./components/Squad";
 import Footer from "./components/Footer";
 
 function App() {
-  const squads = [
+  const [squads, setSquads] = useState([
     {
       name: "Programação",
-      primaryColor: "#57C278",
-      secondaryColor: "#D9F7E9",
+      color: "#57C278",
     },
     {
       name: "Front-End",
-      primaryColor: "#82CFFA",
-      secondaryColor: "#E8F8FF",
+      color: "#82CFFA",
     },
     {
       name: "Data Science",
-      primaryColor: "#A6D157",
-      secondaryColor: "#F0F8E2",
+      color: "#A6D157",
     },
     {
       name: "Devops",
-      primaryColor: "#E06B69",
-      secondaryColor: "#FDE7E8",
+      color: "#E06B69",
     },
     {
       name: "UX e Design",
-      primaryColor: "#DB6EBF",
-      secondaryColor: "#FAE9F5",
+      color: "#DB6EBF",
     },
     {
       name: "Mobile",
-      primaryColor: "#FFBA05",
-      secondaryColor: "#FFF5D9",
+      color: "#FFBA05",
     },
     {
       name: "Inovação e Gestão",
-      primaryColor: "#FF8A29",
-      secondaryColor: "#FFEEDF",
+      color: "#FF8A29",
     },
-  ];
+  ]);
 
   const [collaborators, setCollaborators] = useState([]);
 
   const toCollaborator = (collaborator) => {
     setCollaborators([...collaborators, collaborator]);
   };
+
+  function deleteCollaborator() {}
+
+  function changeSquadColor(squadColor, squadName) {
+    setSquads(
+      squads.map((squad) => {
+        if (squad.name === squadName) {
+          squad.color = squadColor;
+        }
+        return squad;
+      })
+    );
+  }
 
   return (
     <div className="App">
@@ -60,13 +66,13 @@ function App() {
         <h1>Minha organização</h1>
         {squads.map((squad) => (
           <Squad
+            squad={squad}
             key={squad.name}
             collaborators={collaborators.filter(
               (collaborator) => collaborator.squad === squad.name
             )}
-            name={squad.name}
-            primaryColor={squad.primaryColor}
-            secondaryColor={squad.secondaryColor}
+            deleteCollaborator={deleteCollaborator}
+            changeColor={changeSquadColor}
           />
         ))}
       </section>
